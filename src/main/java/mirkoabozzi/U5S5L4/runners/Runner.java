@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.UUID;
+
 @Component
 public class Runner implements CommandLineRunner {
     @Autowired
@@ -48,6 +50,27 @@ public class Runner implements CommandLineRunner {
 
         try {
 //            productService.delete(UUID.fromString("e828d426-d29d-4c49-ad08-ac9db4d623d9"));
+        } catch (NotFoundEx ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        try {
+            System.out.println("Find by price");
+            productService.findByPrice(1.00).forEach(System.out::println);
+        } catch (NotFoundEx ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        try {
+            System.out.println("Update name");
+            productService.updateProductName(UUID.fromString("eed91556-1671-4916-8495-5a18e238a7bf"), "coca cola 33");
+        } catch (NotFoundEx ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        try {
+            System.out.println("Find kcal");
+            productService.findByKcal(200).forEach(System.out::println);
         } catch (NotFoundEx ex) {
             System.out.println(ex.getMessage());
         }
