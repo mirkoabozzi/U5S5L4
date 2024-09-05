@@ -16,6 +16,9 @@ public class Pizza extends Product {
     @OneToMany(mappedBy = "pizzaId")
     private List<Topping> toppingList;
 
+    public Pizza() {
+    }
+
     public Pizza(String descriptions, int calories, double price, List<Topping> toppingList) {
         super(descriptions, calories, price);
         this.toppingList = toppingList;

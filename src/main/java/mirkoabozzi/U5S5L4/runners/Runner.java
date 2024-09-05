@@ -4,6 +4,8 @@ import mirkoabozzi.U5S5L4.MenuConfiguration;
 import mirkoabozzi.U5S5L4.entities.Drink;
 import mirkoabozzi.U5S5L4.entities.Pizza;
 import mirkoabozzi.U5S5L4.entities.Topping;
+import mirkoabozzi.U5S5L4.exceptions.NotFoundEx;
+import mirkoabozzi.U5S5L4.exceptions.ProductAlreadyOnDb;
 import mirkoabozzi.U5S5L4.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -19,8 +21,12 @@ public class Runner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Pizza pizzaProsciutto = menuConfiguration.getPizzaProsciutto();
-//        productService.saveProduct(pizzaProsciutto);
+        try {
+            Pizza pizzaProsciutto = menuConfiguration.getPizzaProsciutto();
+            productService.saveProduct(pizzaProsciutto);
+        } catch (ProductAlreadyOnDb ex) {
+            System.out.println(ex.getMessage());
+        }
 
         Pizza pizza1 = menuConfiguration.getPizzaPatatine();
 //        productService.saveProduct(pizza1);
@@ -39,6 +45,12 @@ public class Runner implements CommandLineRunner {
 
         Drink drink1 = menuConfiguration.getDrinkCocaCola();
 //        productService.saveProduct(drink1);
+
+        try {
+//            productService.delete(UUID.fromString("e828d426-d29d-4c49-ad08-ac9db4d623d9"));
+        } catch (NotFoundEx ex) {
+            System.out.println(ex.getMessage());
+        }
 
 
     }

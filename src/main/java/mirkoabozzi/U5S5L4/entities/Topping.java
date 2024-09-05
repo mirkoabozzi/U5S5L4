@@ -16,6 +16,9 @@ public class Topping extends Product {
     @JoinColumn(name = "pizza_id")
     private Pizza pizzaId;
 
+    public Topping() {
+    }
+
     public Topping(String descriptions, int calories, double price) {
         super(descriptions, calories, price);
     }

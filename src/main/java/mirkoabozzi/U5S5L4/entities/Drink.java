@@ -12,6 +12,9 @@ import lombok.Setter;
 public class Drink extends Product {
     private double quantity;
 
+    public Drink() {
+    }
+
     public Drink(String descriptions, int calories, double price, double quantity) {
         super(descriptions, calories, price);
         this.quantity = quantity;
