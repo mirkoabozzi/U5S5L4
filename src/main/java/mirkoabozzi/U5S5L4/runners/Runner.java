@@ -1,4 +1,4 @@
-package mirkoabozzi.U5S5L4;
+package mirkoabozzi.U5S5L4.runners;
 
 import org.springframework.boot.CommandLineRunner;
 

@@ -2,7 +2,6 @@ package mirkoabozzi.U5S5L4;
 
 import mirkoabozzi.U5S5L4.entities.Drink;
 import mirkoabozzi.U5S5L4.entities.Pizza;
-import mirkoabozzi.U5S5L4.entities.Product;
 import mirkoabozzi.U5S5L4.entities.Topping;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +12,9 @@ import java.util.List;
 public class MenuConfiguration {
 
     @Bean
-    public Topping getToppingMargherita(){return new Topping("Margherita",500,6);}
+    public Topping getToppingMargherita() {
+        return new Topping("Margherita", 500, 6);
+    }
 
     @Bean
     public Topping getToppingProsciutto() {
@@ -27,12 +28,12 @@ public class MenuConfiguration {
 
     @Bean
     public Pizza getPizzaProsciutto() {
-        return new Pizza("Pizza Prosciutto", 500, 8.00,);
+        return new Pizza("Pizza Prosciutto", 550, 8.00, List.of(getToppingMargherita(), getToppingProsciutto()));
     }
 
     @Bean
     public Pizza getPizzaPatatine() {
-        return new Pizza("Pizza Patatine", 600, 9.00, getToppingPatatine());
+        return new Pizza("Pizza Patatine", 600, 9.00, List.of(getToppingMargherita(), getToppingPatatine()));
     }
 
     @Bean
