@@ -3,13 +3,12 @@ package mirkoabozzi.U5S5L4.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.util.UUID;
 
 @Getter
 @Setter
-@ToString
+
 @Entity
 @Table(name = "product")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -29,5 +28,15 @@ public abstract class Product {
         this.descriptions = descriptions;
         this.calories = calories;
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "descriptions='" + descriptions + '\'' +
+                ", calories=" + calories +
+                ", price=" + price +
+                ", id=" + id +
+                '}';
     }
 }

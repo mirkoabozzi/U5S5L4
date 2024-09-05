@@ -2,7 +2,8 @@ package mirkoabozzi.U5S5L4.entities;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ManyToMany;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +14,7 @@ import java.util.List;
 @Entity
 @DiscriminatorValue("pizza")
 public class Pizza extends Product {
-    @OneToMany(mappedBy = "pizzaId")
+    @ManyToMany(mappedBy = "pizzaList", fetch = FetchType.EAGER)
     private List<Topping> toppingList;
 
     public Pizza() {

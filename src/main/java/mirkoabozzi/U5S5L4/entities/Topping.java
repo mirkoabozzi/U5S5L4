@@ -1,20 +1,19 @@
 package mirkoabozzi.U5S5L4.entities;
 
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
 @DiscriminatorValue("topping")
 public class Topping extends Product {
-    @ManyToOne
-    @JoinColumn(name = "pizza_id")
-    private Pizza pizzaId;
+    @ManyToMany
+    @JoinTable(name = "pizzas_toppings", joinColumns = @JoinColumn(name = "pizza_id"), inverseJoinColumns = @JoinColumn(name = "topping_id"))
+    private List<Pizza> pizzaList;
 
     public Topping() {
     }

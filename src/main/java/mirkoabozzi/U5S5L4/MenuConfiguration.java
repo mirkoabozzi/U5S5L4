@@ -12,28 +12,38 @@ import java.util.List;
 public class MenuConfiguration {
 
     @Bean
-    public Topping getToppingMargherita() {
-        return new Topping("Margherita", 500, 6);
+    public Topping getToppingPomodoro() {
+        return new Topping("Pomodoro", 50, 3);
+    }
+
+    @Bean
+    public Topping getToppingMozzarella() {
+        return new Topping("Mozzarella", 300, 3);
     }
 
     @Bean
     public Topping getToppingProsciutto() {
-        return new Topping("prosciutto", 50, 2);
+        return new Topping("Prosciutto", 50, 2);
     }
 
     @Bean
     public Topping getToppingPatatine() {
-        return new Topping("patatine", 100, 3);
+        return new Topping("Patatine", 100, 3);
+    }
+
+    @Bean
+    public Pizza getPizzaMargherita() {
+        return new Pizza("Margherita", 500, 6, List.of(getToppingPomodoro(), getToppingMozzarella()));
     }
 
     @Bean
     public Pizza getPizzaProsciutto() {
-        return new Pizza("Pizza Prosciutto", 550, 8.00, List.of(getToppingMargherita(), getToppingProsciutto()));
+        return new Pizza("Pizza Prosciutto", 550, 8.00, List.of(getToppingPomodoro(), getToppingMozzarella(), getToppingProsciutto()));
     }
 
     @Bean
     public Pizza getPizzaPatatine() {
-        return new Pizza("Pizza Patatine", 600, 9.00, List.of(getToppingMargherita(), getToppingPatatine()));
+        return new Pizza("Pizza Patatine", 600, 9.00, List.of(getToppingPomodoro(), getToppingMozzarella(), getToppingPatatine()));
     }
 
     @Bean
