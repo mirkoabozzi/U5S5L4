@@ -15,6 +15,6 @@ public interface ProductRepository extends JpaRepository<Product, UUID> {
 
     List<Product> findByPrice(Double price);
 
-    @Query("SELECT p FROM Product p WHERE p.pizza.calories >= :calories OR p.drink.calories >= :calories OR p.topping.calories >= :calories")
+    @Query("SELECT p FROM Product p WHERE p.calories IS NOT NULL AND p.calories >= :calories")
     List<Product> findProductUpToKcal(int calories);
 }
